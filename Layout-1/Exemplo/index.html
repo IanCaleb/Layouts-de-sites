@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <style>
+        /*Da forma que foi projetada, só basta adicionar o conteúdo para que os elementos se expandam*/
+
+        *{
+            /*Formata a estilização que vêm com o navegador*/
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body{
+            display: flex;
+            background: #fff;
+
+            /*
+            Permite quebra de linha quando os elementos não couberem na tela.
+
+                -- Antes de adicionar isso, os elementos filhos do body tinham sido definidos como 100vw, mas não tinham    
+                esse tamanho pois tinham que dividir espaço entre si
+            */
+            flex-wrap: wrap;
+
+        }
+
+
+        header{
+            display: flex;
+            /*cria uma borda externa que afasta os elementos*/
+            padding: 5vw;
+            /*aplica em um só parâmetro:
+
+                Flex-grow - Habilidade de um flex item de crescer 
+                    -- O padrão é 0, pois ele não vai aumentar o tamanho mesmo que o conteudo seja maior que ele mesmo.
+                    -- Ao mudar para 1 todos os filhos do flex container vão ter o mesmo tamanho.
+                    -- Um Elemento com valor 2, aumenta o dobro de um com valor 1.
+
+                Flex-shrink - Habilidade de um flex item de diminuir
+                    -- O padrão é 1, para que possa se reduzir para caber no container.
+                    -- Se mudar para 0, ele não vai reduzir para caber na div.
+                    -- Um Elemento com valor 2, diminui o dobro de um com valor 1.
+
+                Flex-basis - Define o tamanho inicial do item 
+                    -- O padrão é auto, fazendo o item se adaptar ao tamanho do seu conteúdo.
+                    -- Se tiver o valor 0, vai tentar deixar todos os elementos com a mesma largura.
+                    -- O parâmetro passado aqui vai impactar na largura (Se o flex-direction for row)
+                    Ou na Altura (Se o flex-direction for Colun)
+                    -- Pode-se aplicar as unidades %, px, em, etc.
+
+                Flex - Atalho para passar os 3 parâmetros de uma vez
+
+            ;*/
+            flex: 1 1 100vw;
+
+            background: radial-gradient(circle at 20% 30%, #ff6b6b, transparent),
+                        radial-gradient(circle at 80% 20%, #feca57, transparent),
+                        radial-gradient(circle at 50% 80%, #54a0ff, transparent),
+                        radial-gradient(circle at 30% 70%, #1dd1a1, transparent);
+        }
+
+        header .headerContent{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            flex: 1 1 100vw;
+        }
+        header form{
+            position: relative;
+            width: 300px;
+        }
+
+        header input{
+            width: 100%;
+            padding: 10px 40px 10px 10px; /* espaço à direita para a lupa */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        header input:focus {
+            outline: none;
+        }
+
+        header button{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        header img{
+            width: 30%;
+        }
+
+        nav{
+            display: flex;
+            flex: 1 1 100vw;
+            padding: 3px;
+
+            background: #cacaca;
+        }
+
+        nav .navContent{
+            display: flex;
+            flex: 1 1 100vw;
+
+        }
+
+        nav .navContent ul{
+            display: flex;
+            flex: 1 1 100vw;
+
+            justify-content: space-around;
+
+        }
+
+        nav .navContent ul li{
+            display: flex;
+            margin: 5px;
+
+            text-decoration: none;
+        }
+
+        nav .navContent a{
+            text-decoration: none;
+
+            color: black;
+        }
+
+        main{
+            display: flex;
+            flex: 1 1 100vw;
+            background: #f0f0f0
+        }
+
+        main .mainContent{
+            display: flex;
+            flex-direction: column;
+            margin: 30px;
+            width: 100%;
+        }
+
+        main .mainContent .cores{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        main .mainContent .cores .linha{
+            display: flex;
+            flex: 1 1 100vw;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        main .mainContent .quadro{
+            display: flex;
+            width: 26vw;
+            height: 26vw;
+
+            border-radius: 20px;
+
+            margin-bottom: 5vw;
+
+            background: #147844;
+        }
+
+        main .mainContent .cores #linear{
+            background: linear-gradient(to right, #ff6b6b, #54a0ff);
+        }
+
+        main .mainContent .cores #radial{
+            background: radial-gradient(circle, #ff6b6b, #54a0ff);
+        }
+
+        main .mainContent .cores #conico{
+            background: conic-gradient(#ff6b6b, #feca57, #1dd1a1, #54a0ff, purple);
+        }
+
+        main .mainContent .cores #angular{
+            background: conic-gradient(from 90deg, #1dd1a1, #feca57, #1dd1a1, #54a0ff);
+        }
+
+        main .mainContent .cores #diamante{
+            background: radial-gradient(closest-side, #ff6b6b, #54a0ff);
+        }
+
+        main .mainContent .cores #mesh{
+            background: radial-gradient(circle at 20% 30%, #ff6b6b, transparent),
+                        radial-gradient(circle at 80% 20%, #1dd1a1, transparent),
+                        radial-gradient(circle at 50% 80%, #54a0ff, transparent),
+                        radial-gradient(circle at 30% 70%, #feca57, transparent);
+        }
+
+
+
+
+
+
+        aside{
+            display: flex;
+            flex: 1 1 100vw;
+            background: #cacaca
+        }
+
+        aside .asideContent{
+            display: flex;
+            flex-direction: column;
+            margin: 30px;
+            width: 100%;
+        }
+
+        aside .asideContent ul{
+            display: flex;
+            list-style: none;
+
+            justify-content: space-between;
+        }
+
+        aside .asideContent ul li{
+            flex: 0 1 25vw;
+        }
+
+
+        footer{
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 100vw; 
+            width: 100vw;
+            height: 30vh;
+
+            background: radial-gradient(circle at 20% 30%, #ff6b6b, transparent),
+                        radial-gradient(circle at 80% 20%, #feca57, transparent),
+                        radial-gradient(circle at 50% 80%, #54a0ff, transparent),
+                        radial-gradient(circle at 30% 70%, #1dd1a1, transparent);
+        }
+
+        footer .footerContent{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: #fff;
+
+        }
+    </style>
+    <script>
+        
+        function copiarTexto(elemento) {
+            const textos = {
+                linear: "background: linear-gradient(to right, #ff6b6b, #54a0ff);",
+                radial: "background: radial-gradient(circle, #ff6b6b, #54a0ff);",
+                conico: "background: conic-gradient(#ff6b6b, #feca57, #1dd1a1, #54a0ff, purple);",
+                angular: "background: conic-gradient(from 90deg, #1dd1a1, #feca57, #1dd1a1, #54a0ff);",
+                mesh: "background: radial-gradient(circle at 20% 30%, #ff6b6b, transparent), radial-gradient(circle at 80% 20%, #1dd1a1, transparent), radial-gradient(circle at 50% 80%, #54a0ff, transparent), radial-gradient(circle at 30% 70%, #feca57, transparent);",
+                diamante: "background: radial-gradient(closest-side, #ff6b6b, #54a0ff);"
+
+            }
+
+            const textoParaCopiar = textos[elemento.id];
+
+
+            navigator.clipboard.writeText(textoParaCopiar)
+            .then(() => alert("Texto copiado para a área de transferência!"))
+            .catch(err => alert("Erro ao copiar: " + err));
+
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="headerContent">
+            <h1>Gradientes</h1>
+            <P>Um mundo de cores</P>
+            <br>
+            
+            <form action="/search" method="GET">
+                <input type="text" name="q" placeholder="Digite sua pesquisa...">
+                <button type="submit">
+                    🔍
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <nav>
+        <div class="navContent">
+            <ul>
+                <a href="">
+                    <li>HTML</li>
+                </a>
+    
+                <a href="">
+                    <li>CSS</li>
+                </a>
+    
+                <a href="">
+                    <li>JavaScript</li>
+                </a>
+    
+                <a href="">
+                    <li>Go</li>
+                </a>
+            </ul>
+        </div>
+        
+    </nav>
+
+    <main>
+        <div class="mainContent">
+            <div class="textos">
+                <h1>Tipos de Gradientes</h1>
+                <p>Click nas imagens para copiar o código</p>
+            </div>
+
+            <div class="cores">
+                <div class="linha">
+                    <div class="quadro" id="linear"  onclick="copiarTexto(this)">
+                
+                    </div>
+
+                    <div class="quadro" id="radial"  onclick="copiarTexto(this)">
+                        
+                    </div>
+
+                    <div class="quadro" id="conico"  onclick="copiarTexto(this)">
+                        
+                    </div>
+
+                    <div class="quadro" id="angular" onclick="copiarTexto(this)">
+                        
+                    </div>
+
+                    <div class="quadro" id="mesh" onclick="copiarTexto(this)">
+                        
+                    </div>
+
+                    <div class="quadro" id="diamante" onclick="copiarTexto(this)">
+                        
+                    </div>
+
+                    
+
+                    
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <aside>
+        <div class="asideContent">
+            <h2>Outras propriedades</h2>
+            <br>
+            <ul>
+                <li><b>Background -</b> As propriedades de plano de fundo CSS são usadas para adicionar efeitos de plano de fundo para elementos.</li>
+
+                <li><b>RGB -</b> Um valor de cor RGB representa fontes de luz VERMELHA, VERDE e AZUL.</li>
+
+                <li><b>RGBA -</b> Define diferentes cores RGBs com opacidade</li>
+            </ul>
+        </div>
+        
+    </aside>
+    <footer>
+        <div class="footerContent">
+            <h1>Todos os direitos reservados a &copy;Copyright</h1>
+        </div>
+    </footer>
+</body>
+</html>

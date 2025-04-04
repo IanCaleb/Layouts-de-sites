@@ -1,0 +1,95 @@
+/*Da forma que foi projetada, só basta adicionar o conteúdo para que os elementos se expandam*/
+
+*{
+    /*Formata a estilização que vêm com o navegador*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    display: flex;
+    margin: 3px;
+    background: #fff;
+
+    /*
+    Permite quebra de linha quando os elementos não couberem na tela.
+
+        -- Antes de adicionar isso, os elementos filhos do body tinham sido definidos como 100vw, mas não tinham    
+           esse tamanho pois tinham que dividir espaço entre si
+    */
+    flex-wrap: wrap;
+
+}
+
+
+header{
+    display: flex;
+    /*cria uma borda externa que afasta os elementos*/
+    margin: 3px;
+    /*aplica em um só parâmetro:
+
+        Flex-grow - Habilidade de um flex item de crescer 
+            -- O padrão é 0, pois ele não vai aumentar o tamanho mesmo que o conteudo seja maior que ele mesmo.
+            -- Ao mudar para 1 todos os filhos do flex container vão ter o mesmo tamanho.
+            -- Um Elemento com valor 2, aumenta o dobro de um com valor 1.
+
+        Flex-shrink - Habilidade de um flex item de diminuir
+            -- O padrão é 1, para que possa se reduzir para caber no container.
+            -- Se mudar para 0, ele não vai reduzir para caber na div.
+            -- Um Elemento com valor 2, diminui o dobro de um com valor 1.
+
+        Flex-basis - Define o tamanho inicial do item 
+            -- O padrão é auto, fazendo o item se adaptar ao tamanho do seu conteúdo.
+            -- Se tiver o valor 0, vai tentar deixar todos os elementos com a mesma largura.
+            -- O parâmetro passado aqui vai impactar na largura (Se o flex-direction for row)
+               Ou na Altura (Se o flex-direction for Colun)
+            -- Pode-se aplicar as unidades %, px, em, etc.
+
+        Flex - Atalho para passar os 3 parâmetros de uma vez
+
+    ;*/
+    flex: 1 1 100vw;
+
+    background: #a1a1a1
+}
+
+
+nav{
+    display: flex;
+    margin: 3px;
+    flex: 1 1 100vw;
+
+    background: #a1a1a1
+}
+
+main{
+    display: flex;
+    margin: 3px;
+    flex: 1 1 100vw;
+    background: #a1a1a1
+}
+
+aside{
+    display: flex;
+    margin: 3px;
+    flex: 1 1 100vw;
+    background: #a1a1a1
+}
+
+
+
+footer{
+    display: flex;
+    margin: 3px;
+    flex: 1 1 100vw;
+    background: #a1a1a1   
+}
+
+
+
+
+
+
+
